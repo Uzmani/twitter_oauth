@@ -9,10 +9,11 @@
   %>
   <% if @access_token %>
     <div>
-      <p>
-        <strong>token:</strong> <%= @access_token.token %><br>
-        <strong>secret:</strong> <%= @access_token.secret %><br>
-      </p>
+      <h2>Hello <%= current_user.username %>, tweet away!</h2>
+      <form action="/tweet" method="post">
+        <input type="text" name="tweet_input">
+        <input type="submit" value="Tweet this now!">
+      </form>
       <p>
         <button><a href="/sign_out">Sign Out</a></button>
       </p>
@@ -21,4 +22,11 @@
     <button><a href="/sign_in">Sign In with Twitter</a></button>
   <% end %>
   
+  <div style="display:none;" id="load"><h3>Loading</h3>
+  <img src="loading.gif"> • • • • • •
+  </div>
+
+  <div id="tweets">
+  </div>
 </div>
+

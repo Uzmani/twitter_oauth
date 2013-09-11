@@ -1,0 +1,14 @@
+<div class="container">
+  <h2>Hello <%= current_user.username %>, tweet away!</h2>
+  <form action="/tweet" method="post">
+    <input type="text" name="tweet_input">
+    <input type="submit" value="Tweet this now!">
+  </form>
+
+<div style="display:none;" id="load"><h3>Loading</h3>
+<img src="loading.gif"> • • • • • •
+</div>
+
+<div id="tweets">
+</div>
+</div>
