@@ -9,7 +9,7 @@
 
     puts "About to sleep....................."
 
-    p sleep 10
+    sleep 10
 
     
     tweeter = Twitter::Client.new(
