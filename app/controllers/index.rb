@@ -3,11 +3,7 @@ get '/' do
 end
 
 get '/sign_in' do
-  # @user = User.find_by_email(params[:email])
-  #   if @user.password == params[:password]
-  #     session[:user_id] = @user.id
-  #   end
-  # the `request_token` method is defined in `app/helpers/oauth.rb`
+
   redirect request_token.authorize_url # 2 r_t, #3
 end
 
@@ -30,15 +26,18 @@ get '/auth' do # 5
 end
 
 post '/tweet' do 
+  @jid = current_user.tweet(params[:tweet_input])
+  p @jid
+  p job_is_complete(@jid)
+  if job_is_complete(@jid)
+    erb :_tweetjob_status, :layout => false
+  else
+    erb :index
+  end
+end
 
-########12
-  @user = Twitter::Client.new(
-  :oauth_token => current_user.oauth_token,
-  :oauth_token_secret => current_user.oauth_secret
-)
-  @user.update(params[:tweet_input])
+get '/status/:job_id' do 
+  
 
-
-  erb :index
-
+  
 end

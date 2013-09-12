@@ -9,11 +9,12 @@ $(document).ready(function() {
         data: $(this).serialize()
       })
       .done(function(server_response) {
+        console.log(server_response)
       $('#load').hide();
-        $('#tweets').html("Your tweet has been posted!!");
+        $('#tweets').html(server_response);
       })
       .fail(function() {
-        console.log("error");
+        console.log("Something didn't go right");
       })
       .always(function() {
         console.log("complete");
