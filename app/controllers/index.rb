@@ -32,7 +32,7 @@ post '/tweet' do
   if job_is_complete(@jid)
     erb :_tweetjob_status, :layout => false
   else
-    erb :index
+    erb :_no_job, :layout => false
   end
 end
 
