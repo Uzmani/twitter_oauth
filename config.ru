@@ -11,5 +11,7 @@ configure do
   # Set the views to 
   set :views, File.join(Sinatra::Application.root, "app", "views")
 end
+require 'sidekiq/web'
+run Rack::URLMap.new('/' => Sinatra::Application, '/sidekiq' => Sidekiq::Web)
 
 run Sinatra::Application
